@@ -5,9 +5,14 @@ import React, { useState } from "react";
 interface FeedbackFormProps {
   onSubmit?: (data: { name: string; content: string }) => void;
   onClose?: () => void;
+  isLoading?: boolean;
 }
 
-const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit, onClose }) => {
+const FeedbackForm: React.FC<FeedbackFormProps> = ({
+  onSubmit,
+  onClose,
+  isLoading = false,
+}) => {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
@@ -36,6 +41,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit, onClose }) => {
           onChange={(e) => setName(e.target.value)}
           className="mt-1 block w-full h-10 rounded-lg bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           required
+          disabled={isLoading}
         />
       </div>
       <div>
@@ -52,6 +58,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit, onClose }) => {
           rows={4}
           className="mt-1 block w-full rounded-lg bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           required
+          disabled={isLoading}
         />
       </div>
       <div className="flex justify-end gap-4">
@@ -60,15 +67,17 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit, onClose }) => {
             type="button"
             onClick={onClose}
             className="px-6 py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition-all duration-300"
+            disabled={isLoading}
           >
             취소
           </button>
         )}
         <button
           type="submit"
-          className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-indigo-600 transition-all duration-300"
+          className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-indigo-600 transition-all duration-300 disabled:from-gray-600 disabled:to-gray-500"
+          disabled={isLoading}
         >
-          작성하기
+          {isLoading ? "전송 중..." : "작성하기"}
         </button>
       </div>
     </form>

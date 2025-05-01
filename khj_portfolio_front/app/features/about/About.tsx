@@ -34,10 +34,10 @@ const About = () => {
 
         <div className="max-w-6xl mx-auto space-y-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, x: 140 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0, ease: "easeIn" }}
             className="bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-2xl p-8 hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50 ml-48"
           >
             <h3 className="text-2xl font-semibold text-white mb-6">
@@ -53,10 +53,10 @@ const About = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            initial={{ opacity: 0, x: -140 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0, ease: "easeIn" }}
             className="bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-2xl p-8 hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50 mr-48"
           >
             <h3 className="text-2xl font-semibold text-white mb-6">
